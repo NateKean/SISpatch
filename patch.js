@@ -1,18 +1,21 @@
 
 // Patching may take multiple attempts because
 // this script may execute faster than the
-// login box has loaded.
+// login box loads.
 // If this is the case, this script will try
 // to patch the username field before it
 // exists.
 // Thus, measures have been put in place to
-// ensure this script will continue attempting to
+// ensure the script will continue attempting to
 // patch the username field until it succeeds,
 // ensuring near 100% successful patch rate.
 
 // Patch code
 let p = `try {
     document.getElementById('inputUserName').type = 'password';
+} catch (e) {}
+try {
+    document.getElementById('txtUserName').type = 'password';
 } catch (e) {}`;
 
 function attemptPatch() {
@@ -29,6 +32,12 @@ function attemptPatch() {
     
     // Check for success
     let unField = document.getElementById("inputUserName");
+    if ((unField) && (unField.type == "password")) {
+        console.log("Successfully patched.");
+        return; // Stop repeating
+    }
+
+    unField = document.getElementById("txtUserName");
     if ((unField) && (unField.type == "password")) {
         console.log("Successfully patched.");
         return; // Stop repeating

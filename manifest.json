@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "SISpatch",
     "description": "A patch for the Tyler SIS login page that conceals the username field like a password.",
-    "version": "1",
+    "version": "2",
     "author": "Nate Kean",
     "permissions": ["tabs", "*://sdm.sisk12.com/*"],
     "content_scripts": [{
